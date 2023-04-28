@@ -1,0 +1,27 @@
+<h1>TODO APP</h1>
+
+<input 
+  placeholder="Nome" 
+  [(ngModel)]="teste.nome"
+  *ngIf="mostraInput"
+/>
+<select
+[(ngModel)]="teste.categoria">
+<option>TODO</option>
+<option>DOING</option>
+<option>DONE</option>
+</select>
+
+
+<button (click)="cadastrarTarefa()">
+  Cadastrar tarefa
+</button>
+
+<div *ngFor="let novaTarefa of tarefas;index as indice">
+  <h4>Tarefa: {{ novaTarefa.nome }} Categoria:{{ novaTarefa.categoria }}
+    <button (click)="deletaTarefa(novaTarefa.index)">X</button>
+    <button (click)="categoriaTODO(novaTarefa)">TODO</button>
+    <button (click)="categoriaDOING(novaTarefa)">DOING</button>
+    <button (click)="categoriaDONE(novaTarefa)">DONE</button>
+  </h4>
+</div>
