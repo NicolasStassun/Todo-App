@@ -1,0 +1,64 @@
+#descricao{
+
+    width: 34vw;
+    height: 25vh;
+    background-color: transparent;
+
+}
+#nome{
+
+    width: 34vw;
+    background-color: transparent;
+
+}
+#tarefa{
+
+    display: flex;
+    flex-direction: row;
+
+}
+@font-face {
+    font-family: MINECRAFT;
+    src: url(../fontes/Minecraft.ttf);
+}
+header{
+    display: flex;
+    height: 15vh;
+    background-color: #99CC53;
+    justify-content: center;
+    align-items: center;
+    font-family: MINECRAFT;
+
+
+}
+main{
+
+    height: 85vh;
+    background-color: rgb(232, 191, 112);
+
+}
+#cadastro{
+
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid black;
+    border-radius: 5px;
+    width: 35vw;
+
+}
+#teste{
+
+    height: 200px;
+    width: 200px;
+    border: solid black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#tarefa{
+    display: flex;
+    width: auto;
+}

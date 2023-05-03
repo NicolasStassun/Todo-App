@@ -1,8 +1,10 @@
 import { unsupported } from '@angular/compiler/src/render3/view/util';
 import { Component } from '@angular/core';
+import { forEach } from '@angular/router/src/utils/collection';
 interface Tarefa{
 
   nome: string;
+  descricao: string;
   categoria: string;
   index: number;
 
@@ -24,6 +26,7 @@ export class AppComponent {
   teste: Tarefa = {
 
     nome: '',
+    descricao:'',
     categoria: '',
     index: null
 
@@ -34,20 +37,24 @@ export class AppComponent {
   cadastrarTarefa():void{
     const novaTarefa: Tarefa = {
       nome: this.teste.nome,
+      descricao: this.teste.descricao,
       categoria: this.teste.categoria,
       index: this.tarefas.length
+      
     };
+    window.localStorage.setItem("nomeObjeto",JSON.stringify(novaTarefa))  
 
     this.tarefas.push(novaTarefa);
 
     this.teste.nome = '';
+    this.teste.descricao = '';
     this.teste.categoria = '';
 
   }
-  deletaTarefa(index):void{
+  deletaTarefa(indice):void{
 
-    this.tarefas.splice(index,1);
-
+    this.tarefas.splice(indice,1);
+      
   }
 
   addCategoriaTODO(teste):string{
@@ -93,5 +100,9 @@ export class AppComponent {
     this.mostraInput = true
 
   };
+
+
+
+
 
 }
