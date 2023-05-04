@@ -29,7 +29,11 @@
         <button style="border:0;align-self:end;background-color: transparent;justify-self: end;" (click)="deletaTarefa(indice)">X</button>
         <p>
           Tarefa: {{ novaTarefa.nome }}
+        </p>
+        <p>
           Descrição:{{ novaTarefa.descricao }}
+        </p>
+        <p>
           Categoria:{{ novaTarefa.categoria }}
         </p>
         <select [(ngModel)]="novaTarefa.categoria">

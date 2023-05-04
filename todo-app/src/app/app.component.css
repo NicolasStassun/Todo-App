@@ -19,7 +19,6 @@
 
     display: flex;
     flex-direction: row;
-    margin-left: 55px;
 
 }
 @font-face {
@@ -50,7 +49,7 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: solid beige;
+    border: solid rgb(218, 218, 195);
     border-radius: 5px;
     width: 35vw;
     background-color: white;
@@ -60,19 +59,18 @@ main{
 
     height:auto ;
     width: auto;
-    min-height: 225px;
-    min-width: 225px;
-    width: 225px;
-    height: 225px;
-    border: solid black;
-    border-radius: 3px;
+    min-height: 200px;
+    min-width: 200px;
+    border: solid rgb(218, 218, 195) 3px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     font-family: Loew;
-    background-color: beige;
+    background-color: white;
     font-size: 11;
     justify-content: space-between;
+    word-break: break-all;
 
     
 }
