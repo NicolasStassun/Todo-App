@@ -2,6 +2,8 @@
 
     width: 34vw;
     height: 25vh;
+    max-height: 25vh;
+    min-height: 16.2vh;
     background-color: transparent;
 
 }
@@ -18,23 +20,25 @@
 
 }
 @font-face {
-    font-family: MINECRAFT;
-    src: url(../fontes/Minecraft.ttf);
+    font-family: BigNoodle;
+    src: url(../fontes/big_noodle_titling.ttf);
 }
 header{
     display: flex;
     height: 15vh;
-    background-color: #99CC53;
+    background-color:#050517;
     justify-content: center;
     align-items: center;
-    font-family: MINECRAFT;
+    font-family: BigNoodle;
+    color: #D3D5D7;
 
 
 }
 main{
 
-    height: 85vh;
-    background-color: rgb(232, 191, 112);
+    height: auto;
+    min-height: 85vh;
+    background-color: #D3D5D7;
 
 }
 #cadastro{
@@ -57,8 +61,18 @@ main{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    font-family: BigNoodle;
+    
 }
 #tarefa{
     display: flex;
     width: auto;
+}
+#delete{
+
+    width: 3vw;
+    height: 3vh;
+    border: 0;
+    background-color: transparent;
+
 }
