@@ -4,33 +4,36 @@
     height: 25vh;
     max-height: 25vh;
     min-height: 16.2vh;
-    background-color: transparent;
+    background-color: white;
+    border: solid beige;
 
 }
 #nome{
 
     width: 34vw;
     background-color: transparent;
+    border: solid beige;
 
 }
 #tarefa{
 
     display: flex;
     flex-direction: row;
+    margin-left: 55px;
 
 }
 @font-face {
-    font-family: BigNoodle;
-    src: url(../fontes/big_noodle_titling.ttf);
+    font-family: Loew;
+    src: url(../fontes/Loew-Heavy.otf);
 }
 header{
     display: flex;
     height: 15vh;
-    background-color:#050517;
+    background-color:#921F22;
     justify-content: center;
     align-items: center;
-    font-family: BigNoodle;
-    color: #D3D5D7;
+    font-family: Loew;
+    color: beige;
 
 
 }
@@ -38,30 +41,39 @@ main{
 
     height: auto;
     min-height: 85vh;
-    background-color: #D3D5D7;
+    background-color: #993D40
 
 }
 #cadastro{
-
+    position: relative;
     height: 30vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: solid black;
+    border: solid beige;
     border-radius: 5px;
     width: 35vw;
+    background-color: white;
 
 }
 #teste{
 
-    height: 200px;
-    width: 200px;
+    height:auto ;
+    width: auto;
+    min-height: 225px;
+    min-width: 225px;
+    width: 225px;
+    height: 225px;
     border: solid black;
     border-radius: 3px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-family: BigNoodle;
+    font-family: Loew;
+    background-color: beige;
+    font-size: 11;
+    justify-content: space-between;
+
     
 }
 #tarefa{
@@ -74,5 +86,12 @@ main{
     height: 3vh;
     border: 0;
     background-color: transparent;
+
+}
+#cadastraTarefa{
+
+    align-self: end;
+    font-size: small;
+    border-radius: 5px;
 
 }

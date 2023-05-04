@@ -4,36 +4,39 @@
 
 </header>
 <main class="container-fluid py-3">
-  <div style="display: flex; justify-content: center;">
+  <div style="display: flex; justify-content: center; margin-bottom: 30px;">
     <div id="cadastro">
       <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome" *ngIf="mostraInput" />
       <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao" *ngIf="mostraInput"></textarea>
+      <div id="botoes">
+        <select [(ngModel)]="teste.categoria">
+          <option>TODO</option>
+          <option>DOING</option>
+          <option>DONE</option>
+        </select>
 
-      <select [(ngModel)]="teste.categoria">
-        <option>TODO</option>
-        <option>DOING</option>
-        <option>DONE</option>
-      </select>
 
-
-      <button (click)="cadastrarTarefa()">
-        Cadastrar tarefa
-      </button>
+        <button id="cadastraTarefa" (click)="cadastrarTarefa()">
+          Cadastrar tarefa
+        </button>
+    </div>
     </div>
   </div>
 
   <div id="tarefa" class="row fs-6">
     <div *ngFor="let novaTarefa of tarefas;index as indice" class="col-lg-3 col-md-4 my-3 position-relative">
       <div id="teste">
-        
-        <h4> <button style="position: absolute;top: 0%;background-color: transparent;border: 0;left: 55%;" (click)="deletaTarefa(indice)">X</button>Tarefa: {{ novaTarefa.nome }} Descricao:{{ novaTarefa.descricao }} Categoria:{{ novaTarefa.categoria }}
-          <select [(ngModel)]="novaTarefa.categoria">
-            <option>TODO</option>
-            <option>DOING</option>
-            <option>DONE</option>
-          </select>
-          
-        </h4>
+        <button style="border:0;align-self:end;background-color: transparent;justify-self: end;" (click)="deletaTarefa(indice)">X</button>
+        <p>
+          Tarefa: {{ novaTarefa.nome }}
+          Descrição:{{ novaTarefa.descricao }}
+          Categoria:{{ novaTarefa.categoria }}
+        </p>
+        <select [(ngModel)]="novaTarefa.categoria">
+          <option>TODO</option>
+          <option>DOING</option>
+          <option>DONE</option>
+        </select>
       </div>
     </div>
   </div>

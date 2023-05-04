@@ -23,8 +23,6 @@ export class AppComponent implements OnInit{
 
   tarefas: Tarefa [] = [];
 
-
-
   teste: Tarefa = {
 
     nome: '',
@@ -56,6 +54,7 @@ export class AppComponent implements OnInit{
     this.teste.categoria = '';
 
   }
+  
   deletaTarefa(indice):void{
 
     this.tarefas.splice(indice,1);
