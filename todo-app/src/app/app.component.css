@@ -15,12 +15,6 @@
     border: solid beige;
 
 }
-#tarefa{
-
-    display: flex;
-    flex-direction: row;
-
-}
 @font-face {
     font-family: Loew;
     src: url(../fontes/Loew-Heavy.otf);
@@ -57,10 +51,10 @@ main{
 }
 #teste{
 
-    height:auto ;
+    height: auto;
     width: auto;
-    min-height: 200px;
-    min-width: 200px;
+    min-height: 35vh;
+    min-width: 100%;
     border: solid rgb(218, 218, 195) 3px;
     border-radius: 8px;
     display: flex;
@@ -70,13 +64,38 @@ main{
     background-color: white;
     font-size: 11;
     justify-content: space-between;
-    word-break: break-all;
+    word-break: break-word;
 
     
 }
+#todo{
+
+    width: 30%;
+    height: 30%;
+    
+
+}
+#doings{
+
+    width: 30%;
+    height: 30%;
+    
+
+    
+}
+#dones{
+
+    width: 30%;
+    height: 30%;
+    
+
+}
+
 #tarefa{
     display: flex;
-    width: auto;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
 }
 #delete{
 
@@ -86,10 +105,19 @@ main{
     background-color: transparent;
 
 }
+#delete:hover{
+
+    color: #921F22  ;
+
+}
 #cadastraTarefa{
 
     align-self: end;
     font-size: small;
     border-radius: 5px;
 
+}
+h1{
+    font-family: Loew;
+    color: beige;
 }

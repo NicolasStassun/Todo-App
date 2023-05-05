@@ -17,11 +17,22 @@ interface Tarefa{
 
 export class AppComponent implements OnInit{
   ngOnInit(): void {
+
     this.tarefas = JSON.parse(localStorage.getItem('listaDeTarefas'))
+    this.todo = JSON.parse(localStorage.getItem('listaTODO'))
+    this.doing = JSON.parse(localStorage.getItem('listaDOING'))
+    this.done = JSON.parse(localStorage.getItem('listaDONE'))
+    
   }
   title = 'todo-app';
 
   tarefas: Tarefa [] = [];
+
+  todo: Tarefa [] = [];
+
+  done: Tarefa [] = [];
+
+  doing: Tarefa [] = [];
 
   teste: Tarefa = {
 
@@ -49,71 +60,124 @@ export class AppComponent implements OnInit{
 
     this.tarefas.push(novaTarefa);
 
+    this.verificacaoDeListas(novaTarefa)
+
     this.teste.nome = '';
     this.teste.descricao = '';
     this.teste.categoria = '';
 
   }
+
+  trocaListaTodo(todos,indice):void{
+
+    this.verificacaoDeListas(todos)
+
+    this.todo.splice(indice,1);
+
+    localStorage.setItem("listaTODO",JSON.stringify(this.todo))  
+
+  }
+  trocaListaDoing(doings,indice):void{
+
+    this.verificacaoDeListas(doings)
+
+    this.doing.splice(indice,1);
+
+    localStorage.setItem("listaDOING",JSON.stringify(this.doing))  
+
+  }
+  trocaListaDone(done,indice):void{
+
+    this.verificacaoDeListas(done)
+
+    this.done.splice(indice,1);
+
+    localStorage.setItem("listaDONE",JSON.stringify(this.done))  
+
+  }
+
+  updateListaTodo():void{
+
+    localStorage.setItem("listaTODO",JSON.stringify(this.todo))  
+
+  }
+  updateListaDoing():void{
+
+    localStorage.setItem("listaDOING",JSON.stringify(this.doing))
+
+  }
+  updateListaDone():void{
+
+    localStorage.setItem("listaDONE",JSON.stringify(this.done))  
+
+  }
   
-  deletaTarefa(indice):void{
+  deletaTodo(indice):void{
 
-    this.tarefas.splice(indice,1);
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+    this.todo.splice(indice,1);
+    
+    this.updateListaTodo();
+
+    localStorage.setItem("listaTODO",JSON.stringify(this.todo))
+
+  }
+  deletaDoing(indice):void{
+
+    this.doing.splice(indice,1);
+    this.updateListaDoing();
+
+    localStorage.setItem("listaDOING",JSON.stringify(this.doing))
+
+  }
+  deletaDone(indice):void{
+
+    this.done.splice(indice,1);
+    this.updateListaDone();
+    localStorage.setItem("listaDONE",JSON.stringify(this.done))
 
   }
 
-  addCategoriaTODO(teste):string{
+  verificacaoDeListas(novaTarefa):void{
 
-    return teste.categoria = "TODO"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+    if(novaTarefa.categoria == 'TODO'){
 
-  }
-  addCategoriaDOING(teste):string{
+      this.todo.push(novaTarefa)
 
-    return teste.categoria = "DOING"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+      let todoLocalStorage = JSON.parse(localStorage.getItem('listaTODO'))
+      if(todoLocalStorage == null)[
+      todoLocalStorage = []
+      ]
+      todoLocalStorage.push(novaTarefa)
+      localStorage.setItem("listaTODO",JSON.stringify(todoLocalStorage))  
 
-  }
-  addCategoriaDONE(teste):string{
+    }
+    else if(novaTarefa.categoria == 'DOING'){
 
-    return teste.categoria = "DONE"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+      this.doing.push(novaTarefa)
 
-  }
-  categoriaTODO(Tarefa):string{
+      let doingLocalStorage = JSON.parse(localStorage.getItem('listaDOING'))
+      if(doingLocalStorage == null)[
+      doingLocalStorage = []
+      ]
+      doingLocalStorage.push(novaTarefa)
+      localStorage.setItem("listaDOING",JSON.stringify(doingLocalStorage)) 
 
-    return Tarefa.categoria = "TODO"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+    }
+    else if(novaTarefa.categoria == 'DONE'){
 
-  }
-  categoriaDOING(Tarefa):string{
+      this.done.push(novaTarefa)
 
-    return Tarefa.categoria = "DOING"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+      let doneLocalStorage = JSON.parse(localStorage.getItem('listaDONE'))
+      if(doneLocalStorage == null)[
+      doneLocalStorage = []
+      ]
+      doneLocalStorage.push(novaTarefa)
+      localStorage.setItem("listaDONE",JSON.stringify(doneLocalStorage)) 
 
-  }
-  categoriaDONE(Tarefa):string{
-
-    return Tarefa.categoria = "DONE"
-    localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+    }
 
   }
 
   mostraInput: boolean = true;
-
-  esconderInput():void{
-
-    this.mostraInput = false
-
-  };
-  mostrarInput():void{
-
-    this.mostraInput = true
-
-  };
-
-
-
-
 
 }
