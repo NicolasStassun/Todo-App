@@ -22,8 +22,27 @@ export class AppComponent implements OnInit{
     this.todo = JSON.parse(localStorage.getItem('listaTODO'))
     this.doing = JSON.parse(localStorage.getItem('listaDOING'))
     this.done = JSON.parse(localStorage.getItem('listaDONE'))
+
+    if(!this.todo){
+
+      this.todo = [];
+
+    }
+    if(!this.doing){
+
+      this.doing = [];
+
+    }
+    if(!this.done){
+
+      this.done = [];
+
+    }
     
   }
+
+
+
   title = 'todo-app';
 
   tarefas: Tarefa [] = [];
@@ -177,7 +196,54 @@ export class AppComponent implements OnInit{
     }
 
   }
+  trocaBooleanTarefa():boolean{
 
-  mostraInput: boolean = true;
+    if(this.cadastrarTarefaBoolean==false){
+
+      console.log(this.cadastrarTarefaBoolean)
+      this.nomeCadastroTarefa = "Cancelar Tarefa"
+      this.cadastrarCategoriaBoolean = false
+      return this.cadastrarTarefaBoolean = true
+
+
+    }
+    if(this.cadastrarTarefaBoolean==true){
+
+      console.log(this.cadastrarTarefaBoolean)
+      this.nomeCadastroTarefa = "Adicionar Tarefa"
+      return this.cadastrarTarefaBoolean = false
+
+    }
+
+  }
+
+
+  cadastrarTarefaBoolean: boolean = false;
+  nomeCadastroTarefa: string = "Adicionar Tarefa";
+
+  trocaBooleanCategoria():boolean{
+
+    if(this.cadastrarCategoriaBoolean==false){
+
+      console.log(this.cadastrarCategoriaBoolean)
+      this.nomeCadastroCategoria = "Cancelar Categoria"
+      this.cadastrarTarefaBoolean = false;
+      return this.cadastrarCategoriaBoolean = true
+
+
+    }
+    if(this.cadastrarCategoriaBoolean==true){
+
+      console.log(this.cadastrarCategoriaBoolean)
+      this.nomeCadastroCategoria = "Adicionar Categoria"
+      return this.cadastrarCategoriaBoolean = false
+
+    }
+
+  }
+
+
+  cadastrarCategoriaBoolean: boolean = false;
+  nomeCadastroCategoria: string = "Adicionar Categoria";
 
 }

@@ -2,8 +2,8 @@
 
     width: 34vw;
     height: 25vh;
-    max-height: 25vh;
-    min-height: 16.2vh;
+    max-height: 21vh;
+    min-height: 21vh;
     background-color: white;
     border: solid beige;
 
@@ -120,4 +120,9 @@ main{
 h1{
     font-family: Loew;
     color: beige;
+}
+button{
+
+    border-radius: 30px;
+
 }

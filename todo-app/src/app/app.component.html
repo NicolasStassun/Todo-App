@@ -4,10 +4,36 @@
 
 </header>
 <main class="container-fluid py-3">
-  <div style="display: flex; justify-content: center; margin-bottom: 30px;">
-    <div id="cadastro">
-      <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome" *ngIf="mostraInput" />
-      <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao" *ngIf="mostraInput"></textarea>
+
+  <div style="display: flex;justify-content: center; border-radius:40px ;">
+
+    <button (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
+    <button (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
+
+  </div>
+
+  <div *ngIf="cadastrarTarefaBoolean">
+    <div id="cadastro" >
+      <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome"  />
+      <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao"></textarea>
+      <div id="botoes">
+        <select [(ngModel)]="teste.categoria">
+          <option>TODO</option>
+          <option>DOING</option>
+          <option>DONE</option>
+        </select>
+
+
+        <button id="cadastraTarefa" (click)="cadastrarTarefa()">
+          Cadastrar tarefa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cadastrarCategoriaBoolean">
+    <div id="cadastro" >
+      <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome"  />
       <div id="botoes">
         <select [(ngModel)]="teste.categoria">
           <option>TODO</option>
