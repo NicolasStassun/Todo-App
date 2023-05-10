@@ -39,7 +39,7 @@ main{
 }
 #cadastro{
     position: relative;
-    height: 30vh;
+    height: 95%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -110,13 +110,6 @@ main{
     color: #921F22  ;
 
 }
-#cadastraTarefa{
-
-    align-self: end;
-    font-size: small;
-    border-radius: 5px;
-
-}
 h1{
     font-family: Loew;
     color: beige;
@@ -124,5 +117,6 @@ h1{
 button{
 
     border-radius: 30px;
+    border: solid black 1px;
 
 }

@@ -5,113 +5,66 @@
 </header>
 <main class="container-fluid py-3">
 
-  <div style="display: flex;justify-content: center; border-radius:40px ;">
+  <div style="display: flex;justify-content: space-evenly; border-radius:40px ;">
 
     <button (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
     <button (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
 
   </div>
-<div style="display: flex; justify-content: center;">
-  <div *ngIf="cadastrarTarefaBoolean">
-    <div id="cadastro" >
-      <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome"  />
-      <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao"></textarea>
-      <div id="botoes">
-        <select [(ngModel)]="teste.categoria">
-          <option>TODO</option>
-          <option>DOING</option>
-          <option>DONE</option>
-        </select>
-
-
-        <button id="cadastraTarefa" (click)="cadastrarTarefa()">
-          Cadastrar tarefa
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="cadastrarCategoriaBoolean">
-    <div id="cadastro" >
-      <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome"  />
-      <div id="botoes">
-        <select [(ngModel)]="teste.categoria">
-          <option>TODO</option>
-          <option>DOING</option>
-          <option>DONE</option>
-        </select>
-
-
-        <button id="cadastraTarefa" (click)="cadastrarTarefa()">
-          Cadastrar tarefa
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div id="tarefa">
-    <div id="todo">
-      <h1>TODO</h1>
-      <div *ngFor="let todos of todo;index as indice">
-        <div id="teste">
-          <button id='delete' style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-            (click)="deletaTodo(indice)">X</button>
-          <p>
-            Tarefa: {{ todos.nome }}
-          </p>
-          <p>
-            Descrição:{{ todos.descricao }}
-          </p>
-          <select [(ngModel)]="todos.categoria" (ngModelChange)="trocaListaTodo(todos,indice)">
-            <option>TODO</option>
-            <option>DOING</option>
-            <option>DONE</option>
+  <div style="display: flex; justify-content: center;">
+    <div *ngIf="cadastrarTarefaBoolean">
+      <div id="cadastro">
+        <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome" />
+        <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao"></textarea>
+        <div id="botoes" class="d-flex column mb-3">
+          <select [(ngModel)]="teste.categoria">    
+                <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
           </select>
+
+
+          <button (click)="cadastrarTarefa()">
+            Cadastrar tarefa
+          </button>
         </div>
       </div>
     </div>
-    <div id="doings">
-      <h1>DOING</h1>
-      <div *ngFor="let doings of doing;index as indice">
-        <div id="teste">
-          <button id='delete' style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-            (click)="deletaDoing(indice)">X</button>
-          <p>
-            Tarefa: {{ doings.nome }}
-          </p>
-          <p>
-            Descrição:{{ doings.descricao }}
-          </p>
-          <select [(ngModel)]="doings.categoria" (ngModelChange)="trocaListaDoing(doings,indice)">
-            <option>TODO</option>
-            <option>DOING</option>
-            <option>DONE</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div id="dones">
-      <h1>DONE</h1>
-      <div *ngFor="let dones of done;index as indice">
-        <div id="teste">
-          <button id='delete' style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-            (click)="deletaDone(indice)">X</button>
-          <p>
-            Tarefa: {{ dones.nome }}
-          </p>
-          <p>
-            Descrição:{{ dones.descricao }}
-          </p>
-          <select [(ngModel)]="dones.categoria" (ngModelChange)="trocaListaDone(dones,indice)">
-            <option>TODO</option>
-            <option>DOING</option>
-            <option>DONE</option>
-          </select>
+
+    <div *ngIf="cadastrarCategoriaBoolean">
+      <div id="cadastro">
+        <input id="nome" placeholder="Nome" [(ngModel)]="novaCategoria" />
+        <div id="botoes">
+          <button (click)="cadastrarCategoria(novaCategoria)">
+            Cadastrar Categoria
+          </button>
         </div>
       </div>
     </div>
   </div>
+
+  <div *ngFor="let categoria of categorias" [attr.value]="categoria">
+
+    <h1>{{categoria}}</h1>
+    <div *ngFor="let tarefa of tarefas">
+      <div *ngIf="tarefa.categoria==categoria">
+        <div>
+        <button style="border:0;align-self:end;background-color: transparent;justify-self: end;" (click)="deletaTarefa(indice)">X</button>
+        <p>
+          Tarefa: {{ tarefa.nome }}
+          Descrição:{{ tarefa.descricao }}
+          Categoria:{{ tarefa.categoria }}
+        </p>
+      </div>
+
+      </div>
+
+      
+
+
+
+    </div>
+
+  </div>
+
 
 
 </main>
