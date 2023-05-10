@@ -17,8 +17,8 @@
         <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome" />
         <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao"></textarea>
         <div id="botoes" class="d-flex column mb-3">
-          <select [(ngModel)]="teste.categoria">    
-                <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
+          <select [(ngModel)]="teste.categoria">
+            <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
           </select>
 
 
@@ -40,27 +40,34 @@
       </div>
     </div>
   </div>
+  <div class="teste">
+  <div class="h-75" *ngFor="let categoria of categorias" [attr.value]="categoria">
+    <div id="categorias"style="display: inline-flex; flex-direction: column;">
+      <h1 class="d-flex flex-row mb-3">{{categoria}}</h1>
+      <div *ngFor="let tarefa of tarefas">
+        <div *ngIf="tarefa.categoria==categoria">
+          <div>
+            <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
+              (click)="deletaTarefa(indice)">X</button>
+            <p>
+              Tarefa: {{ tarefa.nome }}
+            </p>
+            <p>
+              Descrição:{{ tarefa.descricao }}
+            </p>
+            <p>
+              Categoria:{{ tarefa.categoria }}
+            </p>
+          </div>
 
-  <div *ngFor="let categoria of categorias" [attr.value]="categoria">
+        </div>
+        </div>
 
-    <h1>{{categoria}}</h1>
-    <div *ngFor="let tarefa of tarefas">
-      <div *ngIf="tarefa.categoria==categoria">
-        <div>
-        <button style="border:0;align-self:end;background-color: transparent;justify-self: end;" (click)="deletaTarefa(indice)">X</button>
-        <p>
-          Tarefa: {{ tarefa.nome }}
-          Descrição:{{ tarefa.descricao }}
-          Categoria:{{ tarefa.categoria }}
-        </p>
+
+
+
+
       </div>
-
-      </div>
-
-      
-
-
-
     </div>
 
   </div>

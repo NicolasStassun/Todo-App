@@ -120,3 +120,8 @@ button{
     border: solid black 1px;
 
 }
+
+    .teste {
+        display: flex;
+        justify-content: space-between;
+    }
