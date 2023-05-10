@@ -11,7 +11,7 @@
     <button (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
 
   </div>
-
+<div style="display: flex; justify-content: center;">
   <div *ngIf="cadastrarTarefaBoolean">
     <div id="cadastro" >
       <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome"  />
@@ -48,6 +48,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <div id="tarefa">
     <div id="todo">
