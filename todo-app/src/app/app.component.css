@@ -49,7 +49,7 @@ main{
     background-color: white;
 
 }
-#teste{
+#tarefas{
 
     height: auto;
     width: auto;
@@ -123,5 +123,5 @@ button{
 
     .teste {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }

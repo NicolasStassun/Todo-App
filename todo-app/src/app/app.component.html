@@ -41,13 +41,14 @@
     </div>
   </div>
   <div class="teste">
-  <div class="h-75" *ngFor="let categoria of categorias" [attr.value]="categoria">
-    <div id="categorias"style="display: inline-flex; flex-direction: column;">
-      <h1 class="d-flex flex-row mb-3">{{categoria}}</h1>
-      <div *ngFor="let tarefa of tarefas">
-        <div *ngIf="tarefa.categoria==categoria">
-          <div>
-            <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
+  <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
+    <div *ngIf="5>indice" >
+      <div id="categorias"style="display: inline-flex; flex-direction: column; width:40vh">
+        <h1 class="d-flex flex-row mb-3">{{categoria}}</h1>
+        <div *ngFor="let tarefa of tarefas">
+          <div *ngIf="tarefa.categoria==categoria">
+            <div id="tarefas">
+              <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
               (click)="deletaTarefa(indice)">X</button>
             <p>
               Tarefa: {{ tarefa.nome }}
@@ -71,6 +72,7 @@
     </div>
 
   </div>
+</div>
 
 
 

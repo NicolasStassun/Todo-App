@@ -87,7 +87,7 @@ export class AppComponent implements OnInit{
     if(this.cadastrarTarefaBoolean==false){
 
       this.nomeCadastroTarefa = "Cancelar Tarefa"
-      
+      this.nomeCadastroCategoria = "Adicionar Categoria"
       this.cadastrarCategoriaBoolean = false
       return this.cadastrarTarefaBoolean = true
 
