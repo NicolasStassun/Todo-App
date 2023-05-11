@@ -26,11 +26,6 @@ export class AppComponent implements OnInit{
       localStorage.setItem('listaDeCategorias', JSON.stringify(this.categorias));
     }
 
-    if(!this.tarefas || this.tarefas.length === 0)[
-
-      localStorage.setItem('listaDeTarefas', JSON.stringify(this.tarefas));
-
-    ]
   
   }
 
@@ -74,7 +69,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  numeroCategorias: number = 0;
+  numeroCategorias: number = this.categorias.length;
 
   cadastrarCategoria(categoria): void{
 
@@ -95,8 +90,6 @@ export class AppComponent implements OnInit{
     console.log(categoria)
 
     this.novaCategoria = "";
-
-    this.numeroCategorias ++;
   }
 
     
@@ -106,6 +99,36 @@ export class AppComponent implements OnInit{
 
     this.tarefas.splice(indice,1);
     localStorage.setItem("listaDeTarefas",JSON.stringify(this.tarefas))
+  }
+
+  verificacaoCategoriaExistente():void{
+
+    for(let tarefa of this.tarefas){
+
+      let categoriaExiste = true;
+
+      for(let categoria of this.categorias){
+
+        if(tarefa.categoria == categoria){
+
+          categoriaExiste = true
+
+        }
+        else{
+
+          categoriaExiste = false
+
+        }
+
+      }
+      if(categoriaExiste == false){
+
+        this.deletaTarefa(tarefa)
+      }
+
+
+    }
+
   }
 
   trocaBooleanTarefa():boolean{
@@ -186,10 +209,11 @@ export class AppComponent implements OnInit{
   }
   deletaCategoria(): void {
     const indice = this.categorias.indexOf(this.categoria);
-    if (indice >= 0) {
+    if (indice >= 3) {
       this.categorias.splice(indice, 1);
     }
     this.categoria = null;
+    this.verificacaoCategoriaExistente()
     localStorage.setItem("listaDeCategorias", JSON.stringify(this.categorias));
   }
   

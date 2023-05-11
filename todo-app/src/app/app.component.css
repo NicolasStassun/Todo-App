@@ -22,7 +22,7 @@
 header{
     display: flex;
     height: 15vh;
-    background-color:#921F22;
+    background-color:#121118;
     justify-content: center;
     align-items: center;
     font-family: Loew;
@@ -34,7 +34,7 @@ main{
 
     height: auto;
     min-height: 85vh;
-    background-color: #993D40
+    background-color: #494752
 
 }
 #cadastro{
