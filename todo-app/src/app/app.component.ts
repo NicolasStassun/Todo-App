@@ -73,7 +73,7 @@ export class AppComponent implements OnInit{
 
   cadastrarCategoria(categoria): void{
 
-    if(categoria!=""){
+    if(categoria!= null){
 
       this.categorias.push(categoria)
     
@@ -234,6 +234,7 @@ export class AppComponent implements OnInit{
   }
 
 
+
   trocaBooleanRemover():boolean{
 
     if(this.removerCategoriaBoolean==false){
@@ -254,13 +255,30 @@ export class AppComponent implements OnInit{
     }
 
   }
+
+
+deletarCategoriaPadrao: boolean = false;
+
+fecharAlertaCategoriaPadrao(): void {
+  this.deletarCategoriaPadrao = false;
+}
+
+
   deletaCategoria(): void {
     const indice = this.categorias.indexOf(this.categoria);
+
+    if(indice == 1 || indice == 2 || indice == 0){
+
+      this.deletarCategoriaPadrao = true;
+      
+
+    }
+
     if (indice >= 3) {
       this.categorias.splice(indice, 1);
+      this.verificacaoCategoriaExistente()
     }
     this.categoria = null;
-    this.verificacaoCategoriaExistente()
     localStorage.setItem("listaDeCategorias", JSON.stringify(this.categorias));
   }
 

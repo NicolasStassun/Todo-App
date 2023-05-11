@@ -1,3 +1,4 @@
+
 <header>
 
   <h1>TODO APP</h1>
@@ -39,6 +40,31 @@
 
   </div>
 
+  <div *ngIf="deletarCategoriaPadrao == true">
+    
+    <div style="border: solid rgb(218, 218, 195);
+    border-radius: 5px;
+    width: 35vw;
+    background-color: white;
+    position: absolute;
+    bottom: 3%;
+    right: 1w%;
+    "class="modal-dialog modal-dialog-centered">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Erro ao remover categoria</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharAlertaCategoriaPadrao()"></button>
+    </div>
+    <div class="modal-body">
+      <p>Não é possível deletar uma categoria padrão</p>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
 
 
   <div> 
@@ -57,6 +83,7 @@
             <option *ngFor="let categoria of categorias;index as indice" [ngValue]="categoria">{{categoria}}</option>
           </select>
             <button *ngIf="categoria" (click)="deletaCategoria()">X</button>
+            
 
         </div>
       </div>
@@ -67,6 +94,8 @@
 
   </div>
   
+  
+
   <div style="display: flex; justify-content: center;">
     <div *ngIf="cadastrarTarefaBoolean">
       <div id="cadastro">
@@ -95,12 +124,12 @@
     </div>
   </div>
 
-  <div *ngIf="filtroCategoria == null">
+  <div *ngIf="filtroCategoria == null" >
   <div class="teste">
     <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
       <div>
         <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
-          <h1 class="d-flex flex-row mb-3">{{categoria}}</h1>
+          <h1 class="d-flex flex-row mb-2 text-break" >{{categoria}}</h1>
           <div *ngFor="let tarefa of tarefas;index as indice2">
             <div *ngIf="tarefa.categoria==categoria">
               <div id="tarefas">

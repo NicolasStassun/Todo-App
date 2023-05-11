@@ -103,7 +103,7 @@ button{
 .teste {
         display: flex;
         justify-content: space-around;
-        width: 98vw;
+        width: 95vw;
         flex-wrap: wrap;
 }
 #divFiltro{
@@ -133,5 +133,14 @@ button{
 
 
     width: 95%;
+
+}
+.blur{
+
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
 
 }
