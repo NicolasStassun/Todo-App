@@ -11,9 +11,35 @@
       <button class="btn btn-primary" (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
       <button class="btn btn-primary" (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
       <button class="btn btn-primary" (click)="trocaBooleanRemover()">{{nomeRemoverCategoria}}</button>
+      <button class="btn btn-primary" (click)="trocaBooleanMostrarAdicionarFiltro()" style="padding: 0; width: 1vw;">Filtro</button>
 
     </div>
   </div>
+
+  <div>
+
+    <div *ngIf="adicionarMostrarFiltroBoolean" style="display:flex; justify-content: center; flex-wrap: nowrap;">
+
+      <div id="cadastro">
+
+        <p style="font-family: Loew;color: black; font-size: small;">Qual categoria deseja filtrar</p>
+        
+
+        <div style="display: flex; flex-direction:row; justify-content: center;">
+
+          <select [(ngModel)]="categoria">
+            <option *ngFor="let categoria of categorias;index as indice" [ngValue]="categoria">{{categoria}}</option>
+          </select>
+            <button *ngIf="categoria" (click)="adicionaFiltroCategoria()">Adicionar Filtro</button>
+            <button (click)="removerFiltroCategoria()">Remover Filtro</button>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
 
   <div> 
 
@@ -40,7 +66,7 @@
 
 
   </div>
-
+  
   <div style="display: flex; justify-content: center;">
     <div *ngIf="cadastrarTarefaBoolean">
       <div id="cadastro">
@@ -68,6 +94,8 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="filtroCategoria == null">
   <div class="teste">
     <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
       <div>
@@ -104,4 +132,47 @@
 
     </div>
   </div>
+</div>
+
+<div *ngIf="filtroCategoria != null " id="divFiltro">
+  <div style="display: flex;">
+    <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
+      <div *ngIf="categoria == filtroCategoria">
+        <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
+          <div >
+          <h1 class="d-flex flex-row mb-3" id="divFiltro">{{categoria}}</h1>
+          <div *ngFor="let tarefa of tarefas;index as indice2">
+            <div *ngIf="tarefa.categoria==categoria">
+              <div id="tarefas">
+                <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
+                  (click)="deletaTarefa(indice2)">X</button>
+                <p>
+                  Tarefa: {{ tarefa.nome }}
+                </p>
+                <p>
+                  Descrição:{{ tarefa.descricao }}
+                </p>
+                <p>
+                  Categoria:{{ tarefa.categoria }}
+                </p>
+                <select [(ngModel)]="tarefa.categoria">
+                  <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 </main>

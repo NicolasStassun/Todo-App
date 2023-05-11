@@ -139,6 +139,7 @@ export class AppComponent implements OnInit{
       this.nomeCadastroCategoria = "Adicionar Categoria"
       this.cadastrarCategoriaBoolean = false
       this.removerCategoriaBoolean = false
+      this.adicionarMostrarFiltroBoolean = false
       return this.cadastrarTarefaBoolean = true
 
 
@@ -165,6 +166,7 @@ export class AppComponent implements OnInit{
       this.nomeCadastroTarefa = "Adicionar Tarefa"
       this.cadastrarTarefaBoolean = false;
       this.removerCategoriaBoolean = false
+      this.adicionarMostrarFiltroBoolean = false
       return this.cadastrarCategoriaBoolean = true
 
 
@@ -188,6 +190,50 @@ export class AppComponent implements OnInit{
   removerCategoriaBoolean: boolean = false;
   nomeRemoverCategoria: string = "Remover Categoria";
 
+  adicionarFiltroBoolean: boolean = false;
+  adicionarMostrarFiltroBoolean: boolean = false;
+
+  filtroCategoria: string = null;
+
+  trocaBooleanMostrarAdicionarFiltro(): boolean{
+
+    if(this.adicionarMostrarFiltroBoolean==false){
+
+      this.nomeCadastroTarefa = "Adicionar Tarefa"
+      this.nomeCadastroCategoria = "Adicionar Categoria"
+
+      this.cadastrarTarefaBoolean = false;
+      this.cadastrarCategoriaBoolean = false;
+      this.removerCategoriaBoolean = false;
+      return this.adicionarMostrarFiltroBoolean = true
+
+
+    }
+    if(this.adicionarMostrarFiltroBoolean==true){
+
+      return this.adicionarMostrarFiltroBoolean = false
+
+    }
+
+  }
+
+  trocaBooleanAdicionarFiltro(): boolean{
+
+    if(this.adicionarFiltroBoolean==false){
+
+      return this.adicionarFiltroBoolean = true
+
+
+    }
+    if(this.adicionarFiltroBoolean==true){
+
+      return this.adicionarFiltroBoolean = false
+
+    }
+
+  }
+
+
   trocaBooleanRemover():boolean{
 
     if(this.removerCategoriaBoolean==false){
@@ -195,6 +241,7 @@ export class AppComponent implements OnInit{
       console.log(this.removerCategoriaBoolean)
       this.cadastrarTarefaBoolean = false;
       this.cadastrarCategoriaBoolean = false;
+      this.adicionarMostrarFiltroBoolean = false
       return this.removerCategoriaBoolean = true
 
 
@@ -215,6 +262,16 @@ export class AppComponent implements OnInit{
     this.categoria = null;
     this.verificacaoCategoriaExistente()
     localStorage.setItem("listaDeCategorias", JSON.stringify(this.categorias));
+  }
+
+  adicionaFiltroCategoria(): void {
+    this.filtroCategoria = this.categoria;
+    console.log(this.filtroCategoria)
+    this.categoria = null;
+  }
+  removerFiltroCategoria(): void {
+    this.filtroCategoria = null;
+    this.categoria = null;
   }
   
   

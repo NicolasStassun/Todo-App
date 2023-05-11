@@ -103,10 +103,16 @@ button{
 .teste {
         display: flex;
         justify-content: space-around;
-
         width: 98vw;
         flex-wrap: wrap;
 }
+#divFiltro{
+
+    display: flex;
+    justify-content: center;
+
+}
+
 #categorias{
 
     width: 100%;
