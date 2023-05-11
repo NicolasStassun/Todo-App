@@ -19,11 +19,19 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
 
     this.tarefas = JSON.parse(localStorage.getItem('listaDeTarefas'))
+    this.categorias = JSON.parse(localStorage.getItem('listaDeCategorias'))
 
-    this.cadastrarCategoria("TODO")
-    this.cadastrarCategoria("DOING")
-    this.cadastrarCategoria("DONE")
+    if (!this.categorias || this.categorias.length === 0) {
+      this.categorias = ['TODO', 'DOING', 'DONE'];
+      localStorage.setItem('listaDeCategorias', JSON.stringify(this.categorias));
+    }
 
+    if(!this.tarefas){
+
+      localStorage.setItem('listaDeTarefas', JSON.stringify(this.tarefas));
+
+    }
+  
   }
 
   title = 'todo-app';
@@ -66,14 +74,32 @@ export class AppComponent implements OnInit{
 
   }
 
+  numeroCategorias: number = 0;
+
   cadastrarCategoria(categoria): void{
 
-    this.categorias.push(categoria)
+    if(categoria!=""){
+
+      this.categorias.push(categoria)
+    
+    let listaLocalStorageCategoria = JSON.parse(localStorage.getItem('listaDeCategorias'))
+    if(listaLocalStorageCategoria == null)[
+      listaLocalStorageCategoria = []
+    ]
+    listaLocalStorageCategoria.push(categoria)
+    
+    localStorage.setItem("listaDeCategorias",JSON.stringify(listaLocalStorageCategoria))
+
+    
 
     console.log(categoria)
 
     this.novaCategoria = "";
 
+    this.numeroCategorias ++;
+  }
+
+    
   }
 
   deletaTarefa(indice):void{

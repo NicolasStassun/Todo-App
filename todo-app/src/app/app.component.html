@@ -3,7 +3,7 @@
   <h1>TODO APP</h1>
 
 </header>
-<main class="container-fluid py-3">
+<main class="container-fluid py-3" style="padding: 0;margin: 0;">
 
   <div style="display: flex;justify-content: space-evenly; border-radius:40px ;">
 
@@ -20,8 +20,6 @@
           <select [(ngModel)]="teste.categoria">
             <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
           </select>
-
-
           <button (click)="cadastrarTarefa()">
             Cadastrar tarefa
           </button>
@@ -42,14 +40,14 @@
   </div>
   <div class="teste">
   <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
-    <div *ngIf="5>indice" >
-      <div id="categorias"style="display: inline-flex; flex-direction: column; width:40vh">
+    <div>
+      <div id="categorias"style="display:flex; flex-direction: column; width:40vh">
         <h1 class="d-flex flex-row mb-3">{{categoria}}</h1>
-        <div *ngFor="let tarefa of tarefas">
+        <div *ngFor="let tarefa of tarefas;index as indice2">
           <div *ngIf="tarefa.categoria==categoria">
             <div id="tarefas">
               <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-              (click)="deletaTarefa(indice)">X</button>
+              (click)="deletaTarefa(indice2)">X</button>
             <p>
               Tarefa: {{ tarefa.nome }}
             </p>
@@ -59,6 +57,9 @@
             <p>
               Categoria:{{ tarefa.categoria }}
             </p>
+            <select [(ngModel)]="tarefa.categoria">
+              <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
+            </select>
           </div>
 
         </div>
@@ -73,7 +74,4 @@
 
   </div>
 </div>
-
-
-
 </main>
