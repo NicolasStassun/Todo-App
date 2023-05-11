@@ -68,28 +68,6 @@ main{
 
     
 }
-#todo{
-
-    width: 30%;
-    height: 30%;
-    
-
-}
-#doings{
-
-    width: 30%;
-    height: 30%;
-    
-
-    
-}
-#dones{
-
-    width: 30%;
-    height: 30%;
-    
-
-}
 
 #tarefa{
     display: flex;
@@ -125,6 +103,7 @@ button{
 .teste {
         display: flex;
         justify-content: space-around;
+
         width: 98vw;
         flex-wrap: wrap;
 }
@@ -135,5 +114,18 @@ button{
     align-items: center;
     min-height: 45vh;
     
+
+}
+.btn-primary{
+
+    background-color: beige;
+    color: black;
+    font-size: large;
+  
+}
+.btn-group{
+
+
+    width: 95%;
 
 }

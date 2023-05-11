@@ -4,13 +4,36 @@
 
 </header>
 <main class="container-fluid py-3" style="padding: 0;margin: 0;">
+<div class="d-flex justify-content-center mb-4 mt-2">
+  <div class="btn-group " role="group" aria-label="Basic example" style="display: flex;justify-content: space-evenly; border-radius:40px ;">
 
-  <div style="display: flex;justify-content: space-evenly; border-radius:40px ;">
-
-    <button (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
-    <button (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
+    <button class="btn btn-primary" (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
+    <button class="btn btn-primary" (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
+    <button class="btn btn-primary" (click)="trocaBooleanRemover()">{{nomeRemoverCategoria}}</button>
 
   </div>
+  </div>
+
+  <div>
+
+    <div *ngIf="removerCategoriaBoolean" style="display:flex; justify-content: center; flex-wrap: nowrap;">
+
+      <div id="cadastro" >
+
+        <p style="font-family: Loew;color: black; font-size: small;">Informe a categoria que deseja remover</p>
+        <div style="display: flex; flex-direction:row; justify-content: center;">
+        <select [(ngModel)]="categoria" >
+          <option *ngFor="let categoria of categorias;index as indice" [ngValue]="categoria">{{categoria}}</option>
+        </select>
+        <button *ngIf="categoria" (click)="deletaCategoria()">X</button>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
   <div style="display: flex; justify-content: center;">
     <div *ngIf="cadastrarTarefaBoolean">
       <div id="cadastro">

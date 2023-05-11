@@ -26,11 +26,11 @@ export class AppComponent implements OnInit{
       localStorage.setItem('listaDeCategorias', JSON.stringify(this.categorias));
     }
 
-    if(!this.tarefas){
+    if(!this.tarefas || this.tarefas.length === 0)[
 
       localStorage.setItem('listaDeTarefas', JSON.stringify(this.tarefas));
 
-    }
+    ]
   
   }
 
@@ -115,6 +115,7 @@ export class AppComponent implements OnInit{
       this.nomeCadastroTarefa = "Cancelar Tarefa"
       this.nomeCadastroCategoria = "Adicionar Categoria"
       this.cadastrarCategoriaBoolean = false
+      this.removerCategoriaBoolean = false
       return this.cadastrarTarefaBoolean = true
 
 
@@ -140,6 +141,7 @@ export class AppComponent implements OnInit{
       this.nomeCadastroCategoria = "Cancelar Categoria"
       this.nomeCadastroTarefa = "Adicionar Tarefa"
       this.cadastrarTarefaBoolean = false;
+      this.removerCategoriaBoolean = false
       return this.cadastrarCategoriaBoolean = true
 
 
@@ -154,8 +156,44 @@ export class AppComponent implements OnInit{
 
   }
 
+  categoria: string = "";
+
 
   cadastrarCategoriaBoolean: boolean = false;
   nomeCadastroCategoria: string = "Adicionar Categoria";
+
+  removerCategoriaBoolean: boolean = false;
+  nomeRemoverCategoria: string = "Remover Categoria";
+
+  trocaBooleanRemover():boolean{
+
+    if(this.removerCategoriaBoolean==false){
+
+      console.log(this.removerCategoriaBoolean)
+      this.cadastrarTarefaBoolean = false;
+      this.cadastrarCategoriaBoolean = false;
+      return this.removerCategoriaBoolean = true
+
+
+    }
+    if(this.removerCategoriaBoolean==true){
+
+      console.log(this.removerCategoriaBoolean)
+      return this.removerCategoriaBoolean = false
+
+    }
+
+  }
+  deletaCategoria(): void {
+    const indice = this.categorias.indexOf(this.categoria);
+    if (indice >= 0) {
+      this.categorias.splice(indice, 1);
+    }
+    this.categoria = null;
+    localStorage.setItem("listaDeCategorias", JSON.stringify(this.categorias));
+  }
+  
+  
+  
 
 }
