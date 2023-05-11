@@ -69,6 +69,8 @@ export class AppComponent implements OnInit{
 
   }
 
+  
+
   numeroCategorias: number = this.categorias.length;
 
   cadastrarCategoria(categoria): void{
@@ -152,6 +154,33 @@ export class AppComponent implements OnInit{
     }
 
   }
+
+  filtroTarefa: boolean = false;
+  filtroTarefaNome: string = null;
+
+  adicionaFiltroTarefa():void{
+
+    if(this.filtroTarefa==false){
+
+      this.filtroTarefa = true
+
+
+    }
+    if(this.filtroTarefa==true){
+
+      this.filtroTarefa = false
+
+    }
+
+  }
+
+  removerFiltroTarefa(): void {
+
+    this.filtroTarefa = null;
+    
+  }
+
+
 
 
   cadastrarTarefaBoolean: boolean = false;

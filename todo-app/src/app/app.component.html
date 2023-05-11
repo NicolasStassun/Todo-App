@@ -1,4 +1,3 @@
-
 <header>
 
   <h1>TODO APP</h1>
@@ -12,7 +11,8 @@
       <button class="btn btn-primary" (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
       <button class="btn btn-primary" (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
       <button class="btn btn-primary" (click)="trocaBooleanRemover()">{{nomeRemoverCategoria}}</button>
-      <button class="btn btn-primary" (click)="trocaBooleanMostrarAdicionarFiltro()" style="padding: 0; width: 1vw;">Filtro</button>
+      <button class="btn btn-primary" (click)="trocaBooleanMostrarAdicionarFiltro()"
+        style="padding: 0; width: 1vw;">Filtro</button>
 
     </div>
   </div>
@@ -24,50 +24,58 @@
       <div id="cadastro">
 
         <p style="font-family: Loew;color: black; font-size: small;">Qual categoria deseja filtrar</p>
-        
+
 
         <div style="display: flex; flex-direction:row; justify-content: center;">
 
           <select [(ngModel)]="categoria">
             <option *ngFor="let categoria of categorias;index as indice" [ngValue]="categoria">{{categoria}}</option>
           </select>
-            <button *ngIf="categoria" (click)="adicionaFiltroCategoria()">Adicionar Filtro</button>
-            <button (click)="removerFiltroCategoria()">Remover Filtro</button>
-          
+          <button *ngIf="categoria" (click)="adicionaFiltroCategoria()">Adicionar Filtro</button>
+          <button (click)="removerFiltroCategoria()">Remover Filtro</button>
+
         </div>
+
+        <p style="font-family: Loew;color: black; font-size: small;">Qual tarefa deseja filtrar</p>
+        <input id="nome" placeholder="Nome da Tarefa" [(ngModel)]="filtroTarefaNome"/>
+        <div style="display: flex; flex-direction:row; justify-content: center;">
+        <button (click)="adicionaFiltroTarefa()">Adicionar Filtro</button>
+        <button (click)="removerFiltroTarefa()">Remover Filtro</button>
+        </div>
+
       </div>
     </div>
 
   </div>
 
   <div *ngIf="deletarCategoriaPadrao == true">
-    
+
     <div style="border: solid rgb(218, 218, 195);
     border-radius: 5px;
-    width: 35vw;
+    width: auto;
     background-color: white;
     position: absolute;
     bottom: 3%;
-    right: 1w%;
-    "class="modal-dialog modal-dialog-centered">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Erro ao remover categoria</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharAlertaCategoriaPadrao()"></button>
+    right: 1%;
+    " class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Erro ao remover categoria</h5>
+            <button type="button" (click)="fecharAlertaCategoriaPadrao()">X</button>
+          </div>
+          <div class="modal-body">
+            <p>Não é possível deletar uma categoria padrão</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-      <p>Não é possível deletar uma categoria padrão</p>
-    </div>
+
   </div>
-</div>
-</div>
-
-</div>
 
 
 
-  <div> 
+  <div>
 
     <div *ngIf="removerCategoriaBoolean" style="display:flex; justify-content: center; flex-wrap: nowrap;">
 
@@ -82,8 +90,8 @@
           <select [(ngModel)]="categoria">
             <option *ngFor="let categoria of categorias;index as indice" [ngValue]="categoria">{{categoria}}</option>
           </select>
-            <button *ngIf="categoria" (click)="deletaCategoria()">X</button>
-            
+          <button *ngIf="categoria" (click)="deletaCategoria()">X</button>
+
 
         </div>
       </div>
@@ -93,8 +101,8 @@
 
 
   </div>
-  
-  
+
+
 
   <div style="display: flex; justify-content: center;">
     <div *ngIf="cadastrarTarefaBoolean">
@@ -124,84 +132,69 @@
     </div>
   </div>
 
-  <div *ngIf="filtroCategoria == null" >
-  <div class="teste">
-    <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
-      <div>
-        <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
-          <h1 class="d-flex flex-row mb-2 text-break" >{{categoria}}</h1>
-          <div *ngFor="let tarefa of tarefas;index as indice2">
-            <div *ngIf="tarefa.categoria==categoria">
-              <div id="tarefas">
-                <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-                  (click)="deletaTarefa(indice2)">X</button>
-                <p>
-                  Tarefa: {{ tarefa.nome }}
-                </p>
-                <p>
-                  Descrição:{{ tarefa.descricao }}
-                </p>
-                <p>
-                  Categoria:{{ tarefa.categoria }}
-                </p>
-                <select [(ngModel)]="tarefa.categoria">
-                  <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
-                </select>
+  <div *ngIf="filtroCategoria == null">
+    <div class="teste">
+      <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
+        <div>
+          <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
+            <h1 class="d-flex flex-row mb-2 text-break">{{categoria}}</h1>
+            <div *ngFor="let tarefa of tarefas;index as indice2">
+
+              <div *ngIf="filtroTarefaNome == null">
+              <div *ngIf="tarefa.categoria==categoria">
+
+                
+                <div id="tarefas">
+                  <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
+                    (click)="deletaTarefa(indice2)">X</button>
+                  <p>
+                    Tarefa: {{ tarefa.nome }}
+                  </p>
+                  <p>
+                    Descrição:{{ tarefa.descricao }}
+                  </p>
+                  <p>
+                    Categoria:{{ tarefa.categoria }}
+                  </p>
+                  <select [(ngModel)]="tarefa.categoria">
+                    <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
+                  </select>
+                </div>
+                </div>
+
+
+                <div *ngIf="filtroTarefaNome == tarefa.nome">
+
+                  <div *ngIf="tarefa.categoria==categoria">
+                    <div id="tarefas">
+                      <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
+                        (click)="deletaTarefa(indice2)">X</button>
+                      <p>
+                        Tarefa: {{ tarefa.nome }}
+                      </p>
+                      <p>
+                        Descrição:{{ tarefa.descricao }}
+                      </p>
+                      <p>
+                        Categoria:{{ tarefa.categoria }}
+                      </p>
+                      <select [(ngModel)]="tarefa.categoria">
+                        <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
+                      </select>
+                    </div>
+
+                </div>
               </div>
-
             </div>
+            </div>
+
+
+
+
           </div>
-
-
-
-
-
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="filtroCategoria != null " id="divFiltro">
-  <div style="display: flex;">
-    <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
-      <div *ngIf="categoria == filtroCategoria">
-        <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
-          <div >
-          <h1 class="d-flex flex-row mb-3" id="divFiltro">{{categoria}}</h1>
-          <div *ngFor="let tarefa of tarefas;index as indice2">
-            <div *ngIf="tarefa.categoria==categoria">
-              <div id="tarefas">
-                <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-                  (click)="deletaTarefa(indice2)">X</button>
-                <p>
-                  Tarefa: {{ tarefa.nome }}
-                </p>
-                <p>
-                  Descrição:{{ tarefa.descricao }}
-                </p>
-                <p>
-                  Categoria:{{ tarefa.categoria }}
-                </p>
-                <select [(ngModel)]="tarefa.categoria">
-                  <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
-                </select>
-              </div>
-
-            </div>
-          </div>
-
-          </div>
-
-
-
-
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 </main>
