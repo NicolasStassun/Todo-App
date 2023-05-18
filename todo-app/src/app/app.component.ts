@@ -155,28 +155,18 @@ export class AppComponent implements OnInit{
 
   }
 
-  filtroTarefa: boolean = false;
+  filtroTarefa: string= null;
   filtroTarefaNome: string = null;
 
   adicionaFiltroTarefa():void{
 
-    if(this.filtroTarefa==false){
-
-      this.filtroTarefa = true
-
-
-    }
-    if(this.filtroTarefa==true){
-
-      this.filtroTarefa = false
-
-    }
+    this.filtroTarefaNome = this.filtroTarefa 
 
   }
 
   removerFiltroTarefa(): void {
 
-    this.filtroTarefa = null;
+    this.filtroTarefaNome = null;
     
   }
 

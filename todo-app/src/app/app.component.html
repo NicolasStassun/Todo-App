@@ -8,24 +8,23 @@
     <div class="btn-group " role="group" aria-label="Basic example"
       style="display: flex;justify-content: space-evenly; border-radius:40px ;">
 
-      <button class="btn btn-primary" (click)="trocaBooleanTarefa()">{{nomeCadastroTarefa}}</button>
-      <button class="btn btn-primary" (click)="trocaBooleanCategoria()">{{nomeCadastroCategoria}}</button>
+      <button class="btn btn-primary" routerLink="/tarefas">Tarefas</button>
+      <button class="btn btn-primary" routerLink="/categoria">Categoria</button>
       <button class="btn btn-primary" (click)="trocaBooleanRemover()">{{nomeRemoverCategoria}}</button>
-      <button class="btn btn-primary" (click)="trocaBooleanMostrarAdicionarFiltro()"
-        style="padding: 0; width: 1vw;">Filtro</button>
+      <!-- <button class="btn btn-primary" (click)="trocaBooleanMostrarAdicionarFiltro()"style="padding: 0; width: 1vw;">Filtro</button> -->
 
     </div>
   </div>
 
+  <router-outlet></router-outlet>
+
   <div>
 
-    <div *ngIf="adicionarMostrarFiltroBoolean" style="display:flex; justify-content: center; flex-wrap: nowrap;">
+    <!-- <div *ngIf="adicionarMostrarFiltroBoolean" style="display:flex; justify-content: center; flex-wrap: nowrap;">
 
       <div id="cadastro">
 
         <p style="font-family: Loew;color: black; font-size: small;">Qual categoria deseja filtrar</p>
-
-
         <div style="display: flex; flex-direction:row; justify-content: center;">
 
           <select [(ngModel)]="categoria">
@@ -37,18 +36,18 @@
         </div>
 
         <p style="font-family: Loew;color: black; font-size: small;">Qual tarefa deseja filtrar</p>
-        <input id="nome" placeholder="Nome da Tarefa" [(ngModel)]="filtroTarefaNome"/>
+        <input id="nome" placeholder="Nome da Tarefa" [(ngModel)]="filtroTarefa" />
         <div style="display: flex; flex-direction:row; justify-content: center;">
-        <button (click)="adicionaFiltroTarefa()">Adicionar Filtro</button>
-        <button (click)="removerFiltroTarefa()">Remover Filtro</button>
+          <button (click)="adicionaFiltroTarefa()">Adicionar Filtro</button>
+          <button (click)="removerFiltroTarefa()">Remover Filtro</button>
         </div>
 
       </div>
-    </div>
+    </div> -->
 
   </div>
 
-  <div *ngIf="deletarCategoriaPadrao == true">
+  <!-- <div *ngIf="deletarCategoriaPadrao == true">
 
     <div style="border: solid rgb(218, 218, 195);
     border-radius: 5px;
@@ -104,21 +103,7 @@
 
 
 
-  <div style="display: flex; justify-content: center;">
-    <div *ngIf="cadastrarTarefaBoolean">
-      <div id="cadastro">
-        <input id="nome" placeholder="Nome" [(ngModel)]="teste.nome" />
-        <textarea id="descricao" placeholder="Descricao" [(ngModel)]="teste.descricao"></textarea>
-        <div id="botoes" class="d-flex column mb-3">
-          <select [(ngModel)]="teste.categoria">
-            <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
-          </select>
-          <button (click)="cadastrarTarefa()">
-            Cadastrar tarefa
-          </button>
-        </div>
-      </div>
-    </div>
+  
 
     <div *ngIf="cadastrarCategoriaBoolean">
       <div id="cadastro">
@@ -131,70 +116,4 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="filtroCategoria == null">
-    <div class="teste">
-      <div class="h-75" *ngFor="let categoria of categorias;index as indice" [attr.value]="categoria">
-        <div>
-          <div id="categorias" style="display:flex; flex-direction: column; width:40vh">
-            <h1 class="d-flex flex-row mb-2 text-break">{{categoria}}</h1>
-            <div *ngFor="let tarefa of tarefas;index as indice2">
-
-              <div *ngIf="filtroTarefaNome == null">
-              <div *ngIf="tarefa.categoria==categoria">
-
-                
-                <div id="tarefas">
-                  <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-                    (click)="deletaTarefa(indice2)">X</button>
-                  <p>
-                    Tarefa: {{ tarefa.nome }}
-                  </p>
-                  <p>
-                    Descrição:{{ tarefa.descricao }}
-                  </p>
-                  <p>
-                    Categoria:{{ tarefa.categoria }}
-                  </p>
-                  <select [(ngModel)]="tarefa.categoria">
-                    <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
-                  </select>
-                </div>
-                </div>
-
-
-                <div *ngIf="filtroTarefaNome == tarefa.nome">
-
-                  <div *ngIf="tarefa.categoria==categoria">
-                    <div id="tarefas">
-                      <button style="border:0;align-self:end;background-color: transparent;justify-self: end;"
-                        (click)="deletaTarefa(indice2)">X</button>
-                      <p>
-                        Tarefa: {{ tarefa.nome }}
-                      </p>
-                      <p>
-                        Descrição:{{ tarefa.descricao }}
-                      </p>
-                      <p>
-                        Categoria:{{ tarefa.categoria }}
-                      </p>
-                      <select [(ngModel)]="tarefa.categoria">
-                        <option *ngFor="let categoria of categorias" [attr.value]="categoria">{{categoria}}</option>
-                      </select>
-                    </div>
-
-                </div>
-              </div>
-            </div>
-            </div>
-
-
-
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</main>
+</main> -->
